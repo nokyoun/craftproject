@@ -1,0 +1,15 @@
+<!--viewBtn-->
+
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <img class="thumbnail" src="{{product.imageURL}}">
+        <div class="">
+            <h6><strong>p name</strong></h6>
+            <hr>
+            <h4 style="float: right"><strong>p price</strong></h4>
+            <br>
+        </div>
+</div>
+{% endblock %}

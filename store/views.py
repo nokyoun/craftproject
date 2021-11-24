@@ -94,15 +94,15 @@ def contact(request):
     return render(request, 'store/contact.html')
 
 
-def showItem(request):
+def updateItem(request):
     pData = json.loads(request.body)
     productId = pData['productId']
     action = pData['action']
 
-    print('action', action)
-    print('productID:', productId)
-
-    return JsonResponse('get ID', safe=False)
+    print('action:', action)
+    print('productID:', productId)  
+        
+    return JsonResponse('item:',safe=False)
 
 
 @admin_only
@@ -112,3 +112,24 @@ def manage(request):
 
 def custPage(request):
     return render(request, 'store/custPage.html')
+
+def viewBtn(request):
+    print('viewbtn')
+    context = {}
+    return render(request,'store/viewPage.html',context)
+
+def cart(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        items = order.orderite_set.all()
+    else:
+        items = []
+        order = {'get_cart_total':0, 'get_cart_item':0}
+    context = {'items':items, 'order':order}
+    return render(request,'store/custPage.html', context)
+
+def checkout(request):
+    context = {}
+    return render(request,'store/checkout.html')
+ 

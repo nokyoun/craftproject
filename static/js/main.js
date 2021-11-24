@@ -1,20 +1,27 @@
-var showData = document.getElementsByClassName('showProd')
+var updateBtn = document.getElementsByClassName('update-cart')
 
-for(var i =0; i<showData.length;i++){
-    showData[i].addEventListener('click', function(){
+for(var i =0; i<updateBtn.length;i++){
+    updateBtn[i].addEventListener('click', function(){
         var productId = this.dataset.product
         var action = this.dataset.action
         console.log('product:', productId,'action:', action)
 
-        showItem(productId, action)
+       // console.log('User', user)
+       // if(user == 'AnnonemousUser'){
+          //  console.log('Not login')
+       // }else{
+        //    console.log('User login, sending data')
+       // }
+
+        //showItem(productId, action)
     })
 }
 
 function showItem(productId, action){
 
-    console.log('log')
+    console.log('log in js')
 
-    var url = '/showItem/'
+    var url = '/update_item/'
     fetch(url,{
         method:'POST',
         headers:{

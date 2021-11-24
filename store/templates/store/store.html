@@ -11,7 +11,8 @@
                 <img class="thumbnail" src="{{product.imageURL}}">
                 <div class="box-element product">
                     <h6><strong>{{product.name}}</strong></h6> <hr>
-                    <p style="float: left"><strong>{{product.price|floatformat:2}}</strong></p>
+                   <!-- <a href="{% url 'viewBtn'%}" name="{{product.id}}" class="btn btn-outline-secondary">View</a>-->
+                    <p style="float: left"><strong>THB. {{product.price|floatformat:2}}</strong></p>
                     <br>
                 </div>
             </div>
