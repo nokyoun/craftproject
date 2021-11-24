@@ -26,7 +26,7 @@ SECRET_KEY = 'ap926zyya09+)_f)j-k_h0@-=8881&7d2(_0gz76)i@cpvkw1m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://craftnyshop.herokuapp.com/']
+ALLOWED_HOSTS = ['https://nytesting.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise,runserver_nastatic',
     'django.contrib.staticfiles',
     'store',
     'authentication',
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise,middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -127,9 +129,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     str(BASE_DIR.joinpath('static')),
 ]
-
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
